@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  pickupSound: EnemyDSFX
+  pickupSound: HealthCollect
 --- !u!1001 &8795993777607124296
 PrefabInstance:
   m_ObjectHideFlags: 0

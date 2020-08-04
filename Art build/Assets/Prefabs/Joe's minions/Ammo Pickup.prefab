@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: 25
   gunType: {fileID: 11400000, guid: bcc9d427d04d6ba4aad4d77e70dcaaf9, type: 2}
-  pickupSound: EnemyDSFX
+  pickupSound: HealthCollect
 --- !u!1001 &6499544443208845243
 PrefabInstance:
   m_ObjectHideFlags: 0
