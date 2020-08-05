@@ -226,7 +226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1100}
+  m_AnchoredPosition: {x: 0, y: -1500}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &140822036
@@ -292,19 +292,21 @@ MonoBehaviour:
 
     Sandra Grozav
 
+    Mike
+    Wickes
 
-    <b>Technical
-    Artist</b>
+
+    <b>Technical Artist</b>
 
     Hugo Bailey
 
 
     <b>UI Artists</b>
 
-    Sandra Grozav
+    Sandra
+    Grozav
 
-    Joe
-    Allen
+    Joe Allen
 
 
     <b>Music</b>
@@ -314,15 +316,18 @@ MonoBehaviour:
 
     <b>Sound Effects</b>
 
-    Joe Allen
+    Joe
+    Allen
 
-    Noah
-    Rigden
+    Noah Rigden
 
 
     <b>Special Effects</b>
 
-    Hugo Bailey'
+    Hugo Bailey
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -391,12 +396,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 140822036}
-    characterCount: 392
+    characterCount: 406
     spriteCount: 0
-    spaceCount: 70
-    wordCount: 59
+    spaceCount: 74
+    wordCount: 61
     linkCount: 0
-    lineCount: 40
+    lineCount: 42
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
