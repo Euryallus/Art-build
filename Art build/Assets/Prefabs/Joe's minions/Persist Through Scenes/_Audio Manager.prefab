@@ -47,10 +47,10 @@ MonoBehaviour:
   sceneMusicTracks:
   - sceneName: mainMenu
     musicTracks:
-    - name: Seal Music
+    - name: March of the Seals
       loop: 1
       oneShot: 0
-      audioClip: {fileID: 8300000, guid: 133a1434fbc6a3349a05a8a77aa4d759, type: 3}
+      audioClip: {fileID: 8300000, guid: 5834714d0c1df5d44be5e3ccb1e40bd1, type: 3}
   - sceneName: IntroScene
     musicTracks:
     - name: March of the Seals 2
