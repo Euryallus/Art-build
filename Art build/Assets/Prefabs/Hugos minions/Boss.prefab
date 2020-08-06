@@ -5122,7 +5122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cba66c276aed0874091de1c33eb3950d, type: 2}
+  - {fileID: 2100000, guid: 36bce9ab6cae8ce43962938466458044, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5214,6 +5214,7 @@ MonoBehaviour:
   regenPerSecond: 0.5
   healthBar: {fileID: 1044765233735901498}
   enemyViewAngle: 180
+  deathSoundName: 
   damageMaterial: {fileID: 2100000, guid: 1ca47d99f076fb647abb10ace632be7f, type: 2}
   fireDamage: 2
   fireLength: 4
