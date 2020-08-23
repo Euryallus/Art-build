@@ -25,8 +25,6 @@ public class playerMovement : MonoBehaviour
         [SerializeField]
         private float crouchSpeedReduction = 2;
 
-    [SerializeField]
-    private GameObject ladderNotif;
 
     private GameObject noteMenu;
     private GameObject head;
@@ -65,8 +63,6 @@ public class playerMovement : MonoBehaviour
         head = GameObject.FindGameObjectWithTag("head");
 
         GameObject.FindGameObjectWithTag("navMesh").GetComponent<NavMeshSurface>().BuildNavMesh();
-
-        ladderNotif.SetActive(false);
     }
 
 
@@ -255,7 +251,6 @@ public class playerMovement : MonoBehaviour
         if (collided.CompareTag("Ladder"))
         {
             canClimb = true;
-            ladderNotif.SetActive(true);
         }
     }
 
@@ -267,7 +262,6 @@ public class playerMovement : MonoBehaviour
         {
             canClimb = false;
             onLadder = false;
-            ladderNotif.SetActive(false);
         }
     }
 

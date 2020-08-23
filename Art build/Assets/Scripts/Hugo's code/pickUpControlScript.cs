@@ -23,6 +23,9 @@ public class pickUpControlScript : MonoBehaviour
     [SerializeField]
     private GameObject pickUpText;
 
+    [SerializeField]
+    private GameObject ladderNotif;
+
     void Start()
     {
         //Assigns game objects and attached components using 'find object'
@@ -31,6 +34,7 @@ public class pickUpControlScript : MonoBehaviour
         noteMenu = GameObject.FindGameObjectWithTag("noteDisplayManager");
         generator = GameObject.FindGameObjectWithTag("GeneratorManager").GetComponent<starStoneManager>();
         pickUpText.SetActive(false);
+        ladderNotif.SetActive(false);
     }
 
     void Update()
@@ -47,6 +51,15 @@ public class pickUpControlScript : MonoBehaviour
             else
             {
                 pickUpText.SetActive(false);
+            }
+
+            if (hitObject.CompareTag("Ladder"))
+            {
+                ladderNotif.SetActive(true);
+            }
+            else
+            {
+                ladderNotif.SetActive(false);
             }
 
             if (Input.GetKeyDown(KeyCode.E)) //if item is hit AND E is pressed;
