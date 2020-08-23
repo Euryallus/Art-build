@@ -79,18 +79,22 @@ public class pickUpControlScript : MonoBehaviour
                 {
                     case "Blue":
                         generator.activateStone(starStoneManager.starStones.Blue);
+                        AudioManager.instance.PlaySoundEffect3D("HealthCollect", hitObject.transform.position);
                         break;
 
                     case "Purple":
                         generator.activateStone(starStoneManager.starStones.Purple);
+                        AudioManager.instance.PlaySoundEffect3D("HealthCollect", hitObject.transform.position);
                         break;
 
                     case "Orange":
                         generator.activateStone(starStoneManager.starStones.Orange);
+                        AudioManager.instance.PlaySoundEffect3D("HealthCollect", hitObject.transform.position);
                         break;
 
                     case "Pink":
                         generator.activateStone(starStoneManager.starStones.Pink);
+                        AudioManager.instance.PlaySoundEffect3D("HealthCollect", hitObject.transform.position);
                         break;
 
                 }
