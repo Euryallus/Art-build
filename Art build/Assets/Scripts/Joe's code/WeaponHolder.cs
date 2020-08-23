@@ -43,6 +43,8 @@ public class WeaponHolder : MonoBehaviour
     private bool aimDownSights;                                 //Is the entity currently aiming down sights
     private starStoneManager.starStones lastFrameStarStone;     //The StarStone that was active on the previous frame, used to check for changes in the active StarStone
 
+    private GameObject gunLight;
+
     private void Start()
     {
         playerUsedWeaponTypes = new List<string>();
@@ -52,6 +54,8 @@ public class WeaponHolder : MonoBehaviour
         targetCameraFOV = defaultCameraFOV;
         SetupAvailableWeapons();
         SwitchActiveWeapon(0, true);
+
+        gunLight = GameObject.FindGameObjectWithTag("gunLight");
     }
 
     private void SetupAvailableWeapons()
@@ -134,6 +138,7 @@ public class WeaponHolder : MonoBehaviour
         {
             bool torchOn = activeGun.ToggleTorchOn();
             EnableWeaponTorchGameObject(torchOn);
+
         }
     }
 
