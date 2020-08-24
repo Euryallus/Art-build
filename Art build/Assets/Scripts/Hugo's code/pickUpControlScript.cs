@@ -44,6 +44,8 @@ public class pickUpControlScript : MonoBehaviour
         {
             hitObject = hit.transform.gameObject;
 
+            Debug.Log(hitObject.tag);
+
             if (hitObject.CompareTag("PickUp") && hitObject.GetComponent<item>() == true)
             {
                 pickUpText.SetActive(true);
