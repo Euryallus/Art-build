@@ -364,8 +364,15 @@ public class playStateControl : MonoBehaviour
                 timeRemaining.text = "";
                 waveDisplay.text = "";
                 player.GetComponent<playerHealth>().stopMovement();
-                TextCutscene.storyIndex = 1;
-                SceneManager.LoadScene("EndScene");
+                if (gameWonFade.alpha < 1)
+                {
+                    gameWonFade.alpha += 0.5f * Time.deltaTime;
+                    if (gameWonFade.alpha >= 1)
+                    {
+                        TextCutscene.storyIndex = 1;
+                        SceneManager.LoadScene("EndScene");
+                    }
+                }
                 break;
         }
     }
