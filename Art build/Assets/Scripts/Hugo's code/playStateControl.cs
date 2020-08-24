@@ -98,7 +98,7 @@ public class playStateControl : MonoBehaviour
 
     public enum waveState
     {
-        beforeWaveStart, waveActive, waveFail, waveComplete, gameWon, gameLost
+        beforeWaveStart, waveActive, waveFail, waveComplete, gameWon, gameLost, endWithoutRepair
     }
 
     protected waveState current;
@@ -358,6 +358,15 @@ public class playStateControl : MonoBehaviour
                 timeRemaining.text = "FAILED";
                 waveDisplay.text = "";
                 break;
+
+            case waveState.endWithoutRepair:
+                Cursor.visible = true;
+                timeRemaining.text = "";
+                waveDisplay.text = "";
+                player.GetComponent<playerHealth>().stopMovement();
+                TextCutscene.storyIndex = 1;
+                SceneManager.LoadScene("EndScene");
+                break;
         }
     }
 
@@ -478,7 +487,9 @@ public class playStateControl : MonoBehaviour
         {
             if(wavePointer == waves.Count - 1 && GameObject.FindGameObjectWithTag("GeneratorManager").GetComponent<GeneratorRepair>().GetGeneratorRepaired() == false)
             {
-                    current = waveState.waveFail;
+                //Changed by Joe, loads bad end cutscene instead of out of time screen
+                //current = waveState.waveFail;
+                current = waveState.endWithoutRepair;
             }
             else
             {
