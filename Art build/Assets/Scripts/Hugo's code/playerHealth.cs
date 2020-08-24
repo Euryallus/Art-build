@@ -205,6 +205,10 @@ public class playerHealth : MonoBehaviour
 
             deathMenu.GetComponent<Animator>().Play("deadFade", 0);
 
+            Animator cameraAnim = transform.Find("Main Camera").GetComponent<Animator>();
+            cameraAnim.enabled = true;
+            cameraAnim.SetTrigger("Die");
+
             GameObject.FindGameObjectWithTag("spawnerManager").GetComponent<playStateControl>().playerDied();
 
             stopMovement();
