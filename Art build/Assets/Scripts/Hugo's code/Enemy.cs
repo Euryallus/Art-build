@@ -78,6 +78,7 @@ public class Enemy : MonoBehaviour
 
     protected NavMeshAgent agent;
 
+    [SerializeField]
     protected GameObject player;
     private GameObject currentTarget;
 
@@ -128,7 +129,7 @@ public class Enemy : MonoBehaviour
         enemyType = type;
     }
 
-    private void Start()
+    protected virtual void Start()
     {        
         // Assigns variables based on input from inspector and components attached to game objects
         agent = gameObject.GetComponent<NavMeshAgent>(); 
@@ -224,7 +225,7 @@ public class Enemy : MonoBehaviour
 
         RaycastHit hit;
        
-        if (playerDist < viewDistance && viewConeAngle < enemyViewAngle / 2 && Physics.Raycast(transform.position, playerVector.normalized, out hit, playerDist) && hit.transform.gameObject.CompareTag("Player"))
+        if (playerDist < viewDistance && viewConeAngle < enemyViewAngle / 2 && Physics.Raycast(transform.position, playerVector.normalized, out hit, viewDistance) && hit.transform.gameObject.CompareTag("Player"))
         {
             Debug.DrawRay(transform.position, playerVector.normalized * playerDist, Color.red, 0.25f, false);
 

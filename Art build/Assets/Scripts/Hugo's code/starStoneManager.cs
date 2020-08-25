@@ -50,7 +50,7 @@ public class starStoneManager : MonoBehaviour
         None
     }
 
-    protected starStones activeStone = starStones.None; //initialised to None
+    public starStones activeStone = starStones.None; //initialised to None
 
     public starStones returnActive() //returns active star stone (used in prototype weapon script and enemy damage)
     {
