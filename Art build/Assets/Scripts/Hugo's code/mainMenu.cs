@@ -28,7 +28,8 @@ public class mainMenu : MonoBehaviour
     }
     public void loadScene(string sceneToLoad) // Loads scene whos name has been passed as a parameter (e.g. "MAP" loads the map scene from Build)
     {
-        SceneManager.LoadScene(sceneToLoad);
+        //SceneManager.LoadScene(sceneToLoad);
+        SaveLoadManager.instance.LoadSceneWithFade(sceneToLoad);
     }
 
     public void Update()
@@ -75,6 +76,6 @@ public class mainMenu : MonoBehaviour
     public void LoadIntroScene()
     {
         TextCutscene.storyIndex = 0;
-        SceneManager.LoadScene("IntroScene");
+        SaveLoadManager.instance.LoadSceneWithFade("IntroScene", false);
     }
 }

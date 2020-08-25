@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //------------------------------------------------------\\
 //  SaveLoadManager provides an easy interface for      \\
@@ -12,6 +14,10 @@ using UnityEngine;
 public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager instance;
+
+    public Canvas canvFade;
+    public GameObject prefabFadeOut;
+    public GameObject prefabFadeIn;
 
     //These dictionaries contain default PlayerPref values to be used when loading from
     //  a PlayerPref that has never been set. Ensures consistency across all load calls
@@ -122,6 +128,39 @@ public class SaveLoadManager : MonoBehaviour
         {
             Debug.LogError("No default value for PlayerPrefs float key: " + key);
             return PlayerPrefs.GetFloat(key);
+        }
+    }
+
+    public void LoadSceneWithFade(string sceneName, bool fadeIn = true)
+    {
+        StartCoroutine(LoadSceneWithFadeCoroutine(sceneName, fadeIn));
+    }
+
+    private IEnumerator LoadSceneWithFadeCoroutine(string sceneName, bool fadeIn)
+    {
+        AudioManager.instance.FadeOutMusic();
+
+        GameObject goFadeOut = Instantiate(prefabFadeOut, canvFade.transform);
+
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
+        while (!op.isDone)
+        {
+            yield return null;
+        }
+
+        yield return null;
+
+        DestroyImmediate(goFadeOut);
+
+        if (fadeIn)
+        {
+            GameObject goFadeIn = Instantiate(prefabFadeIn, canvFade.transform);
+
+            yield return new WaitForSecondsRealtime(0.6f);
+
+            Destroy(goFadeIn);
         }
     }
 }

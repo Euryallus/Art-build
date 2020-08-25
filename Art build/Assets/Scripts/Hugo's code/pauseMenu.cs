@@ -55,18 +55,18 @@ public class pauseMenu : MonoBehaviour
     public void backToMainMenu()
     {
         //Loads mainMenu scene
-        SceneManager.LoadScene("mainMenu");
+        SaveLoadManager.instance.LoadSceneWithFade("mainMenu");
     }
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SaveLoadManager.instance.LoadSceneWithFade(SceneManager.GetActiveScene().name);
     }
 
     //Added by Joe:
     //Loads the codex scene on button press
     public void LoadCodexScene()
     {
-        SceneManager.LoadScene("CodexScene");
+        SaveLoadManager.instance.LoadSceneWithFade("CodexScene");
     }
 }

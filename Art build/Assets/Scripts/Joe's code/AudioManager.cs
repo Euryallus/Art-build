@@ -39,6 +39,8 @@ public class AudioManager : MonoBehaviour
     private List<MusicTrack> currentSceneMusicTracks = new List<MusicTrack>();
 
     private bool disableMusicForCurrentScene;   //When true, no music will play in the loaded scene
+    private float musicFadeVolume;
+    private bool fadingOutMusic;
 
     private void Awake()
     {
@@ -58,6 +60,8 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        musicFadeVolume = 1f;
+
         SetupSoundEffectsDict();
         //Start the sound effect cleanup coroutine that will loop for the duration of the game
         StartCoroutine(SoundSourceCleanupCoroutine());
@@ -76,8 +80,14 @@ public class AudioManager : MonoBehaviour
         {
             PlayRandomSceneMusicTrack();
         }
-        //Ensuer the audio source playing bg music is always set to the volume that the player set in the options menu
-        audioSourceMusic.volume = SaveLoadManager.instance.LoadFloatFromPlayerPrefs("Options_Volume_Music");
+
+        if (fadingOutMusic)
+        {
+            musicFadeVolume -= Time.unscaledDeltaTime * 3f;
+        }
+
+        //Ensure the audio source playing bg music is always set to the volume that the player set in the options menu
+        audioSourceMusic.volume = SaveLoadManager.instance.LoadFloatFromPlayerPrefs("Options_Volume_Music") * musicFadeVolume;
     }
 
 
@@ -90,6 +100,8 @@ public class AudioManager : MonoBehaviour
 
         //Enable music for the loaded scene
         disableMusicForCurrentScene = false;
+        fadingOutMusic = false;
+        musicFadeVolume = 1f;
 
         //currentSceneMusicTracks is a list of all tracks that can be played in the loaded scene,
         //  setting as a new list so that tracks from the previous scene do not carry over
@@ -151,6 +163,11 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log("AudioManager - Playing music track: " + chosenTrack.name);
+    }
+
+    public void FadeOutMusic()
+    {
+        fadingOutMusic = true;
     }
 
     #region Playing/Stopping Sound Effects

@@ -52,11 +52,11 @@ public class UIManager : MonoBehaviour
         sliderWeaponCharge = goCanvas.transform.Find("Weapon Charge Slider").GetComponent<Slider>();
         sliderPrototypeCharge = goCanvas.transform.Find("Weapon Info").Find("Prototype Charge Slider").GetComponent<Slider>();
         weaponHolderPlayer = GameObject.Find("Player").GetComponent<WeaponHolder>();
+        Debug.Log("WH: " + weaponHolderPlayer);
     }
 
     private void Update()
     {
-        //Update UI elements based on the player's held weapon
         Weapon activePlayerWeapon = weaponHolderPlayer.activeWeapon;
         if(activePlayerWeapon != null)
         {

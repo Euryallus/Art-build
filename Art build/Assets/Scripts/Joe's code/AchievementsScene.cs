@@ -74,6 +74,6 @@ public class AchievementsScene : MonoBehaviour
     //Returns to the main menu on button press
     public void ButtonReturnToMenu()
     {
-        SceneManager.LoadScene("mainMenu");
+        SaveLoadManager.instance.LoadSceneWithFade("mainMenu");
     }
 }
