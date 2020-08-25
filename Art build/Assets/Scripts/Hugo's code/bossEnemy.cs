@@ -34,6 +34,8 @@ public class bossEnemy : Enemy
     private float blueCooldown = 3f;
     private bool blueReadyToFire = true;
 
+    private bool orangeReady = true;
+
 
     [SerializeField]
     private float bossDamage = 1f;
@@ -42,6 +44,9 @@ public class bossEnemy : Enemy
     private GameObject purpleChargePart1;
     [SerializeField]
     private GameObject purpleChargePart2;
+
+    [SerializeField]
+    private GameObject flames;
 
     [SerializeField]
     private GameObject iceLanceBlueprint;
@@ -65,6 +70,8 @@ public class bossEnemy : Enemy
 
         purpleChargePart1.SetActive(false);
         purpleChargePart2.SetActive(false);
+
+        flames.SetActive(false);
 
         base.Start();
 
@@ -103,8 +110,9 @@ public class bossEnemy : Enemy
                 break;
 
             case starStoneManager.starStones.Purple:
-                 
-                if(canSeePlayer != true)
+                flames.SetActive(false);
+
+                if (canSeePlayer != true)
                 {
                     if(playerDist > viewDistance)
                     {
@@ -156,6 +164,22 @@ public class bossEnemy : Enemy
 
             case starStoneManager.starStones.Orange:
                 purpleLaser.gameObject.SetActive(false);
+                purpleChargePart1.SetActive(false);
+                purpleChargePart2.SetActive(false);
+
+                if (orangeReady && canSeePlayer)
+                {
+                    StartCoroutine(orangeFlames());
+                }
+               
+                if(canSeePlayer != true)
+                {
+                    agent.SetDestination(player.transform.position);
+                }
+                else
+                {
+                    agent.SetDestination(transform.position);
+                }
 
                 break;
 
@@ -163,6 +187,8 @@ public class bossEnemy : Enemy
                 purpleLaser.gameObject.SetActive(false);
                 purpleChargePart1.SetActive(false);
                 purpleChargePart2.SetActive(false);
+
+                flames.SetActive(false);
 
                 if (canSeePlayer & blueReadyToFire)
                 {
@@ -182,6 +208,10 @@ public class bossEnemy : Enemy
 
             case starStoneManager.starStones.Pink:
                 purpleLaser.gameObject.SetActive(false);
+                purpleChargePart1.SetActive(false);
+                purpleChargePart2.SetActive(false);
+
+                flames.SetActive(false);
 
                 break;
         }
@@ -227,6 +257,18 @@ public class bossEnemy : Enemy
         yield return new WaitForSeconds(blueCooldown);
         
         blueReadyToFire = true;
+    }
+
+    private IEnumerator orangeFlames()
+    {
+        flames.SetActive(true);
+        orangeReady = false;
+
+        yield return new WaitForSeconds(5);
+        flames.SetActive(false);
+
+        yield return new WaitForSeconds(3);
+        orangeReady = true;
     }
 
 }
