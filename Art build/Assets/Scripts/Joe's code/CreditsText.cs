@@ -14,6 +14,6 @@ public class CreditsText : MonoBehaviour
     //  once the credits have finished scrolling
     public void CreditsDone()
     {
-        SceneManager.LoadScene("mainMenu");
+        SaveLoadManager.instance.LoadSceneWithFade("mainMenu");
     }
 }

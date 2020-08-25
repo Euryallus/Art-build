@@ -101,7 +101,7 @@ public class CodexScene : MonoBehaviour
     //Loads the main menu scene on button press
     public void ButtonReturnToMenu()
     {
-        SceneManager.LoadScene("mainMenu");
+        SaveLoadManager.instance.LoadSceneWithFade("mainMenu");
     }
 
     #endregion

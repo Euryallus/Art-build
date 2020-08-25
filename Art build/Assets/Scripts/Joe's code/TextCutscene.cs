@@ -114,12 +114,12 @@ public class TextCutscene : MonoBehaviour
             //Done, continue to the next scene that was set based on storyIndex
             if(storyIndex < nextSceneNames.Length)
             {
-                SceneManager.LoadScene(nextSceneNames[storyIndex]);
+                SaveLoadManager.instance.LoadSceneWithFade(nextSceneNames[storyIndex]);
             }
             else
             {
                 //If an invalid story index was set, default to the first element of the nextSceneNames array
-                SceneManager.LoadScene(nextSceneNames[0]);
+                SaveLoadManager.instance.LoadSceneWithFade(nextSceneNames[0]);
             }
         }
     }
