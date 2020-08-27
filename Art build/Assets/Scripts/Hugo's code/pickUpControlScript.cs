@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //
 // ## HUGO BAILEY
@@ -26,6 +28,9 @@ public class pickUpControlScript : MonoBehaviour
     [SerializeField]
     private GameObject ladderNotif;
 
+    [SerializeField]
+    private GameObject offeringText;
+
     void Start()
     {
         //Assigns game objects and attached components using 'find object'
@@ -35,6 +40,7 @@ public class pickUpControlScript : MonoBehaviour
         generator = GameObject.FindGameObjectWithTag("GeneratorManager").GetComponent<starStoneManager>();
         pickUpText.SetActive(false);
         ladderNotif.SetActive(false);
+        offeringText.SetActive(false);
     }
 
     void Update()
@@ -64,6 +70,17 @@ public class pickUpControlScript : MonoBehaviour
                 ladderNotif.SetActive(false);
             }
 
+            if (hitObject.CompareTag("tutorialOffering"))
+            {
+                offeringText.SetActive(true);
+            }
+            else
+            {
+                offeringText.SetActive(false);
+            }
+
+
+
             if (Input.GetKeyDown(KeyCode.E)) //if item is hit AND E is pressed;
             {
                 if (hitObject.CompareTag("PickUp") && hitObject.GetComponent<item>() == true)
@@ -74,6 +91,15 @@ public class pickUpControlScript : MonoBehaviour
                     noteMenu.GetComponent<noteMenuManager>().addToMenu(pickUpItem);
                     display.GetComponent<pickUpDropDown>().displayItemPickUp(pickUpItem.icon, pickUpItem.itemName, pickUpItem.summary); //display on drop down menu
                     Destroy(hitObject);
+                }
+
+                if (hitObject.CompareTag("tutorialOffering"))
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    TextCutscene.storyIndex = 0;
+                    SaveLoadManager.instance.LoadSceneWithFade("IntroScene", false);
+
+                    PlayerPrefs.SetInt("TutorialCompleted", 1);
                 }
 
                 // ## ACTIVATES STAR STONES 

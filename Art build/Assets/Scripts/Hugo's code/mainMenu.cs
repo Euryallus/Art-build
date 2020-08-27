@@ -21,14 +21,28 @@ public class mainMenu : MonoBehaviour
     [SerializeField]
     private Text highscoreText;
 
+    [SerializeField]
+    private GameObject endlessPopUp;
+
     private void Start()
     {
         difficultyDropDown.value = PlayerPrefs.GetInt("Difficulty", 1);
         mode.value = PlayerPrefs.GetInt("EndlessMode", 0);
+
+        if(PlayerPrefs.GetInt("CompletedMain", 0) == 0)
+        {
+            endlessPopUp.SetActive(true);
+        }
+        else
+        {
+            endlessPopUp.SetActive(false);
+        }
     }
     public void loadScene(string sceneToLoad) // Loads scene whos name has been passed as a parameter (e.g. "MAP" loads the map scene from Build)
     {
         //SceneManager.LoadScene(sceneToLoad);
+
+
         SaveLoadManager.instance.LoadSceneWithFade(sceneToLoad);
     }
 
@@ -44,6 +58,12 @@ public class mainMenu : MonoBehaviour
         {
             //hides highscore if endless mode is not active
             highscoreText.text = "";
+        }
+
+        if (PlayerPrefs.GetInt("CompletedMain", 0) == 0)
+        {
+            PlayerPrefs.SetInt("EndlessMode", 0);
+            mode.value = 0;
         }
     }
 
@@ -61,7 +81,17 @@ public class mainMenu : MonoBehaviour
     public void modeChange()
     {
         //alters mode selected from dropdown value
-        PlayerPrefs.SetInt("EndlessMode", mode.value);
+
+        if(PlayerPrefs.GetInt("CompletedMain", 0) == 0)
+        {
+            PlayerPrefs.SetInt("EndlessMode", 0);
+            mode.value = 0;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("EndlessMode", mode.value);
+        }
+        
     }
     
 
@@ -75,7 +105,20 @@ public class mainMenu : MonoBehaviour
     //Added by Joe:
     public void LoadIntroScene()
     {
-        TextCutscene.storyIndex = 0;
-        SaveLoadManager.instance.LoadSceneWithFade("IntroScene", false);
+        if(PlayerPrefs.GetInt("TutorialCompleted", 0) == 0)
+        {
+            SaveLoadManager.instance.LoadSceneWithFade("tutorial", true);
+        }
+        else
+        {
+            TextCutscene.storyIndex = 0;
+            SaveLoadManager.instance.LoadSceneWithFade("IntroScene", false);
+        }
+        
+    }
+
+    public void ResetPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

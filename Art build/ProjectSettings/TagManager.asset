@@ -30,6 +30,7 @@ TagManager:
   - ammoBox
   - healthBox
   - gunLight
+  - tutorialOffering
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class tutorial : MonoBehaviour
 {
@@ -16,10 +17,16 @@ public class tutorial : MonoBehaviour
     [SerializeField]
     private Door notesDoor;
 
+    [SerializeField]
+    private Text tutorialText;
+
+    private bool shownSSText = false;
+
+    private starStoneManager starStone;
 
     void Start()
     {
-        
+        starStone = GameObject.FindGameObjectWithTag("GeneratorManager").GetComponent<starStoneManager>();
     }
 
     // Update is called once per frame
@@ -41,5 +48,16 @@ public class tutorial : MonoBehaviour
         {
             notesDoor.SetLocked(false);
         }
+
+        if(starStone.returnActive() != starStoneManager.starStones.None && shownSSText == false)
+        {
+            displayText("Each stone gives your prototype weapon a different effect");
+            shownSSText = true;
+        }
+    }
+
+    public void displayText(string textToDisp)
+    {
+        tutorialText.text = textToDisp;
     }
 }

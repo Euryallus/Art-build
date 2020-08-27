@@ -383,6 +383,8 @@ public class playStateControl : MonoBehaviour
         //Mark the 'normal mode completed' achievement as completed
         AchievementsManager.instance.SetAchievementCompleted("CompleteMainGame");
 
+        PlayerPrefs.SetInt("CompletedMain", 1);
+
         //The game was won using only the primary weapon - set achievement as completed
         if(WeaponHolder.playerUsedWeaponTypes.Count == 1 && WeaponHolder.playerUsedWeaponTypes[0] == "Primary")
         {

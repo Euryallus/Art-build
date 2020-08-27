@@ -7047,7 +7047,7 @@ MonoBehaviour:
   explosion: {fileID: 1033105548700199340, guid: bdfd7eaf0a077f94d8d97b529fd5362a,
     type: 3}
   missileSpeed: 10
-  missileDamage: 25
+  missileDamage: 5
   fireLength: 3.75
   fireDamage: 1
   slowPercent: 0.8

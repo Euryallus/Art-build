@@ -16,10 +16,20 @@ public class coneScript : MonoBehaviour
 
     private GameObject player;
 
+    private Vector3 bossVector;
+    private GameObject boss;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
+
+    public void takeParentPos(Vector3 parentPosition, GameObject parent)
+    {
+        bossVector = parentPosition;
+        boss = parent;
+    }
+
     public void takeDirection(Vector3 inpDirection)
     {
         direction = inpDirection;
@@ -32,7 +42,12 @@ public class coneScript : MonoBehaviour
         Vector3 Rotation = player.transform.position - transform.position;
 
         Vector3 playerVector = gameObject.transform.position - player.transform.position;
-        playerVector.y = -playerVector.y;
+        //playerVector.x = playerVector.x;
+        //playerVector.y = -playerVector.y;
+        //
+        //float x = playerVector.x;
+        //playerVector.x = -playerVector.z;
+        //playerVector.z = x;
 
         Quaternion lookRotation = Quaternion.LookRotation(playerVector.normalized);
 
@@ -42,6 +57,10 @@ public class coneScript : MonoBehaviour
         if (fire)
         {
             transform.position = Vector3.Lerp(transform.position, transform.position + direction, speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = boss.transform.position + bossVector;
         }
         
     }
@@ -54,7 +73,7 @@ public class coneScript : MonoBehaviour
             collision.gameObject.GetComponent<playerMovement>().slowEffect(0.75f, 3f);
         }
 
-        if (fire)
+        if(collision.gameObject.CompareTag("Enemy") == false && fire)
         {
             Destroy(gameObject);
         }

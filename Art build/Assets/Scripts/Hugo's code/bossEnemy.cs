@@ -10,6 +10,7 @@ using UnityEngine;
 public class bossEnemy : Enemy
 {
     private bool firing = false;
+    private bool readyToFight = false;
     private GameObject missile;
     [SerializeField]
     private GameObject missileBlueprint;
@@ -73,6 +74,8 @@ public class bossEnemy : Enemy
 
         flames.SetActive(false);
 
+        StartCoroutine(wakeUP());
+
         base.Start();
 
     }
@@ -89,32 +92,97 @@ public class bossEnemy : Enemy
 
     public override void Engage()
     {
-        currentStarStone = stoneManager.returnActive();
-        
-        //when player is visible, stop moving and turn to look at player
-
-        Vector3 playerDirection = playerVector.normalized;
-        playerDirection.y = 0;
-
-        Quaternion lookRotation = Quaternion.LookRotation(playerDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
-
-        beamDirection = (player.transform.position - new Vector3(0, 1, 0) - bossHead.position);
-
-        switch (currentStarStone)
+        if (readyToFight)
         {
 
-            case starStoneManager.starStones.None:
-                agent.SetDestination(transform.position);
+            currentStarStone = stoneManager.returnActive();
+            
+            //when player is visible, stop moving and turn to look at player
 
-                break;
+            Vector3 playerDirection = playerVector.normalized;
+            playerDirection.y = 0;
 
-            case starStoneManager.starStones.Purple:
-                flames.SetActive(false);
+            Quaternion lookRotation = Quaternion.LookRotation(playerDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
 
-                if (canSeePlayer != true)
-                {
-                    if(playerDist > viewDistance)
+            beamDirection = (player.transform.position - new Vector3(0, 1, 0) - bossHead.position);
+
+            switch (currentStarStone)
+            {
+
+                case starStoneManager.starStones.None:
+                    agent.SetDestination(transform.position);
+
+                    break;
+
+                case starStoneManager.starStones.Purple:
+                    flames.SetActive(false);
+
+                    if (canSeePlayer != true)
+                    {
+                        if(playerDist > viewDistance)
+                        {
+                            agent.SetDestination(player.transform.position);
+                        }
+                        else
+                        {
+                            agent.SetDestination(transform.position);
+                        }
+                        
+                    }
+                    else
+                    {
+                        agent.SetDestination(transform.position);
+                    }
+
+                    if (purpleReadyToFire)
+                    {
+                        StartCoroutine(purpleCharge());
+                    }
+
+                    if (purpleFiring)
+                    {
+                        RaycastHit hitObj;
+
+                        Vector3 endOfLaser = (bossHead.position + new Vector3(0, beamDirection.y, 0) + (transform.forward * playerDist));
+
+                        //Debug.DrawRay(bossHead.position, (endOfLaser - bossHead.position).normalized * playerDist * 1.2f);
+
+                        if (Physics.Raycast(bossHead.position, (endOfLaser - bossHead.position).normalized, out hitObj, playerDist))
+                        {
+                            if (hitObj.transform.gameObject.CompareTag("Player"))
+                            {
+                                player.GetComponent<playerHealth>().takeDamage(bossDamage);
+                            }
+
+                            else if(hitObj.transform.gameObject != null)
+                            {
+                                endOfLaser = hitObj.point;
+                            }
+                            
+                        }
+
+                        purpleLaser.SetPosition(0, bossHead.position);
+                        
+                        purpleLaser.SetPosition(1, endOfLaser);
+                    }
+                    break;
+
+                case starStoneManager.starStones.Orange:
+                    purpleLaser.gameObject.SetActive(false);
+                    purpleChargePart1.SetActive(false);
+                    purpleChargePart2.SetActive(false);
+
+                    if (orangeReady && canSeePlayer)
+                    {
+                        StartCoroutine(orangeFlames());
+                    }
+
+                    if (canSeePlayer && playerDist > 15)
+                    {
+                        agent.SetDestination(player.transform.position);
+                    }
+                    else if (canSeePlayer != true && playerDist > 15)
                     {
                         agent.SetDestination(player.transform.position);
                     }
@@ -122,101 +190,47 @@ public class bossEnemy : Enemy
                     {
                         agent.SetDestination(transform.position);
                     }
-                    
-                }
-                else
-                {
-                    agent.SetDestination(transform.position);
-                }
 
-                if (purpleReadyToFire)
-                {
-                    StartCoroutine(purpleCharge());
-                }
+                    break;
 
-                if (purpleFiring)
-                {
-                    RaycastHit hitObj;
+                case starStoneManager.starStones.Blue:
+                    purpleLaser.gameObject.SetActive(false);
+                    purpleChargePart1.SetActive(false);
+                    purpleChargePart2.SetActive(false);
 
-                    Vector3 endOfLaser = (bossHead.position + new Vector3(0, beamDirection.y, 0) + (transform.forward * playerDist));
+                    flames.SetActive(false);
 
-                    //Debug.DrawRay(bossHead.position, (endOfLaser - bossHead.position).normalized * playerDist * 1.2f);
-
-                    if (Physics.Raycast(bossHead.position, (endOfLaser - bossHead.position).normalized, out hitObj, playerDist))
+                    if (canSeePlayer & blueReadyToFire)
                     {
-                        if (hitObj.transform.gameObject.CompareTag("Player"))
-                        {
-                            player.GetComponent<playerHealth>().takeDamage(bossDamage);
-                        }
-
-                        else if(hitObj.transform.gameObject != null)
-                        {
-                            endOfLaser = hitObj.point;
-                        }
-                        
+                        StartCoroutine(blueFire());
                     }
 
-                    purpleLaser.SetPosition(0, bossHead.position);
-                    
-                    purpleLaser.SetPosition(1, endOfLaser);
-                }
-                break;
+                    if(canSeePlayer && playerDist > 15)
+                    {
+                        agent.SetDestination(player.transform.position);
+                    }
+                    else if(canSeePlayer != true && playerDist > 15)
+                    {
+                        agent.SetDestination(player.transform.position);
+                    }
+                    else
+                    {
+                        agent.SetDestination(transform.position);
+                    }
 
-            case starStoneManager.starStones.Orange:
-                purpleLaser.gameObject.SetActive(false);
-                purpleChargePart1.SetActive(false);
-                purpleChargePart2.SetActive(false);
+                    break;
 
-                if (orangeReady && canSeePlayer)
-                {
-                    StartCoroutine(orangeFlames());
-                }
-               
-                if(canSeePlayer != true)
-                {
-                    agent.SetDestination(player.transform.position);
-                }
-                else
-                {
-                    agent.SetDestination(transform.position);
-                }
+                case starStoneManager.starStones.Pink:
+                    purpleLaser.gameObject.SetActive(false);
+                    purpleChargePart1.SetActive(false);
+                    purpleChargePart2.SetActive(false);
 
-                break;
+                    flames.SetActive(false);
 
-            case starStoneManager.starStones.Blue:
-                purpleLaser.gameObject.SetActive(false);
-                purpleChargePart1.SetActive(false);
-                purpleChargePart2.SetActive(false);
+                    break;
+            }
 
-                flames.SetActive(false);
-
-                if (canSeePlayer & blueReadyToFire)
-                {
-                    StartCoroutine(blueFire());
-                }
-
-                if(canSeePlayer != true)
-                {
-                    agent.SetDestination(player.transform.position);
-                }
-                else
-                {
-                    agent.SetDestination(transform.position);
-                }
-
-                break;
-
-            case starStoneManager.starStones.Pink:
-                purpleLaser.gameObject.SetActive(false);
-                purpleChargePart1.SetActive(false);
-                purpleChargePart2.SetActive(false);
-
-                flames.SetActive(false);
-
-                break;
         }
-
-
         //base.Engage(); //call base ENGAGE behaviour from parent class ('Enemy')
     }
 
@@ -250,6 +264,7 @@ public class bossEnemy : Enemy
 
         GameObject iceLance = Instantiate(iceLanceBlueprint);
         iceLance.transform.position = transform.position + (transform.right * 2) + (transform.up * 1.5f);
+        iceLance.GetComponent<coneScript>().takeParentPos(iceLance.transform.position - transform.position, gameObject);
 
         yield return new WaitForSeconds(2);
         iceLance.GetComponent<coneScript>().takeDirection((player.transform.position - iceLance.transform.position));
@@ -269,6 +284,13 @@ public class bossEnemy : Enemy
 
         yield return new WaitForSeconds(3);
         orangeReady = true;
+    }
+
+    private IEnumerator wakeUP()
+    {
+        yield return new WaitForSeconds(3);
+
+        readyToFight = true;
     }
 
 }

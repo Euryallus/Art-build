@@ -5072,7 +5072,7 @@ GameObject:
   - component: {fileID: 8879193815263406362}
   - component: {fileID: 8879193815263406369}
   - component: {fileID: 8879193815263406366}
-  - component: {fileID: 8879193815263406563}
+  - component: {fileID: 25767157}
   m_Layer: 0
   m_Name: waveBoss
   m_TagString: Enemy
@@ -5089,7 +5089,7 @@ Transform:
   m_GameObject: {fileID: 8879193815263406360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.834113, y: 3.7682848, z: 3.1704936}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 8879193814877768837}
   - {fileID: 8879193814950616822}
@@ -5195,7 +5195,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 3
---- !u!114 &8879193815263406563
+--- !u!114 &25767157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5204,16 +5204,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8879193815263406360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25af7e09016225c498e82b219293e960, type: 3}
+  m_Script: {fileID: 11500000, guid: 33da6249a64d14d49ba160f1a09fb74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 10
+  viewDistance: 500
   transitionTime: 4
   enemySpeed: 1.5
-  enemyHealth: 350
+  enemyHealth: 200
   regenPerSecond: 0.5
-  healthBar: {fileID: 8879193814877768833}
+  healthBar: {fileID: 0}
   enemyViewAngle: 180
+  deathSoundName: EnemyDSFX
   damageMaterial: {fileID: 2100000, guid: 1ca47d99f076fb647abb10ace632be7f, type: 2}
   fireDamage: 2
   fireLength: 4
@@ -5229,11 +5230,11 @@ MonoBehaviour:
   damageReductionPurpleStarStone: 0.5
   hasHurt: 0
   patrolPoints: []
+  player: {fileID: 0}
   currentPatrolPoint: 0
   difficulty:
   - {fileID: 11400000, guid: de7b8d2a854618c419fd44cc3d333128, type: 2}
   - {fileID: 11400000, guid: cbbca1ae5b134384b8042d19453ab610, type: 2}
   - {fileID: 11400000, guid: 6e2cf650eb0e8a1468ebcfea6e53947b, type: 2}
-  missileBlueprint: {fileID: 4361937881783586816, guid: 32da290a26e0b38449a8e5883bf22a7c,
+  missileTemplate: {fileID: 4361937881783586816, guid: 32da290a26e0b38449a8e5883bf22a7c,
     type: 3}
-  fireRate: 2
