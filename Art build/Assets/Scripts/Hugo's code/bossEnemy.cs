@@ -27,16 +27,19 @@ public class bossEnemy : Enemy
 
     private starStoneManager.starStones currentStarStone;
 
+    [SerializeField]
     private float purpleCooldown = 2f;
     private bool purpleReadyToFire = true;
+    [SerializeField]
     private float purpleChargeTime = 4f;
+    [SerializeField]
     private float purpleFireTime = 4f;
 
+    [SerializeField]
     private float blueCooldown = 3f;
     private bool blueReadyToFire = true;
 
     private bool orangeReady = true;
-
 
     [SerializeField]
     private float bossDamage = 1f;
@@ -58,6 +61,10 @@ public class bossEnemy : Enemy
 
     private Vector3 beamDirection;
 
+    [SerializeField]
+    private List<GameObject> healthPools = new List<GameObject>();
+    private bool poolsActive = false;
+
     public bossEnemy() : base(500f, 180, 4, 1.5f, 4)
     {
         // ## CLASS CONSTRUCTOR
@@ -75,6 +82,11 @@ public class bossEnemy : Enemy
         flames.SetActive(false);
 
         StartCoroutine(wakeUP());
+
+        foreach(GameObject pool in healthPools)
+        {
+            pool.SetActive(false);
+        }
 
         base.Start();
 
@@ -117,6 +129,12 @@ public class bossEnemy : Enemy
 
                 case starStoneManager.starStones.Purple:
                     flames.SetActive(false);
+
+                    poolsActive = false;
+                    foreach (GameObject pool in healthPools)
+                    {
+                        pool.SetActive(false);
+                    }
 
                     if (canSeePlayer != true)
                     {
@@ -173,6 +191,12 @@ public class bossEnemy : Enemy
                     purpleChargePart1.SetActive(false);
                     purpleChargePart2.SetActive(false);
 
+                    poolsActive = false;
+                    foreach (GameObject pool in healthPools)
+                    {
+                        pool.SetActive(false);
+                    }
+
                     if (orangeReady && canSeePlayer)
                     {
                         StartCoroutine(orangeFlames());
@@ -199,6 +223,11 @@ public class bossEnemy : Enemy
                     purpleChargePart2.SetActive(false);
 
                     flames.SetActive(false);
+                    poolsActive = false;
+                    foreach (GameObject pool in healthPools)
+                    {
+                        pool.SetActive(false);
+                    }
 
                     if (canSeePlayer & blueReadyToFire)
                     {
@@ -226,6 +255,18 @@ public class bossEnemy : Enemy
                     purpleChargePart2.SetActive(false);
 
                     flames.SetActive(false);
+
+                    if(poolsActive == false)
+                    {
+                        foreach(GameObject pool in healthPools)
+                        {
+                            pool.SetActive(true);
+                            pool.GetComponent<bossHealthPool>().setParent(gameObject.GetComponent<bossEnemy>());
+                            
+                        }
+
+                        poolsActive = true;
+                    }
 
                     break;
             }
