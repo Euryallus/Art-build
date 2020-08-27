@@ -128,6 +128,12 @@ public class pickUpControlScript : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            pickUpText.SetActive(false);
+            ladderNotif.SetActive(false);
+            offeringText.SetActive(false);
+        }
 
         Debug.DrawLine(camera.transform.position, camera.transform.position + (camera.transform.forward * 3)); //EDITOR DEBUG - drawn representation of raycast
     }

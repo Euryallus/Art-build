@@ -14605,7 +14605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1044765234427708580
 Transform:
   m_ObjectHideFlags: 0
@@ -14768,13 +14768,24 @@ MonoBehaviour:
   bossHead: {fileID: 4502336598730148242}
   fireRate: 2
   stoneManager: {fileID: 0}
+  purpleCooldown: 2
+  purpleChargeTime: 4
+  purpleFireTime: 4
+  blueCooldown: 3
   bossDamage: 1
   purpleChargePart1: {fileID: 4279228257195704197}
   purpleChargePart2: {fileID: 925799101080983757}
-  flames: {fileID: 0}
+  flames: {fileID: 706372688748506000}
   iceLanceBlueprint: {fileID: 6444318393734118213, guid: c0c114dca829b9e43a043031ca6aac3e,
     type: 3}
   purpleLaser: {fileID: 0}
+  healthPools:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4279228257195704197
 GameObject:
   m_ObjectHideFlags: 0
@@ -24349,6 +24360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561e15e98cb790642a0e1b6f313a6ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timePlayerOnFire: 3
+  damageDonePerInterval: 2
+  intervalLength: 0.5
+  damageDoneWhenInFlames: 0.5
 --- !u!1 &8489311050540183197
 GameObject:
   m_ObjectHideFlags: 0

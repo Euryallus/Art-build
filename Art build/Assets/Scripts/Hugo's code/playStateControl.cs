@@ -95,6 +95,8 @@ public class playStateControl : MonoBehaviour
     [SerializeField]
     CanvasGroup gameWonFade;
 
+    [SerializeField]
+    private GameObject bossFade;
 
     public enum waveState
     {
@@ -108,6 +110,8 @@ public class playStateControl : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         failMenu = GameObject.FindGameObjectWithTag("failMenu");
         failMenu.SetActive(false);
+        bossFade.SetActive(false);
+
         StartCoroutine(autoStart());
 
         if(PlayerPrefs.GetInt("EndlessMode", 0) == 1)
@@ -364,6 +368,7 @@ public class playStateControl : MonoBehaviour
                 timeRemaining.text = "";
                 waveDisplay.text = "";
                 player.GetComponent<playerHealth>().stopMovement();
+
                 if (gameWonFade.alpha < 1)
                 {
                     gameWonFade.alpha += 0.5f * Time.deltaTime;
@@ -523,17 +528,23 @@ public class playStateControl : MonoBehaviour
     private void initiateBossFight()
     {
         player.GetComponent<playerMovement>().enabled = false;
-        player.transform.position = bossWavePlayerSpawnLocation.position;
-        player.GetComponent<playerMovement>().enabled = true;
-
-        waveLength = waves[wavePointer].waveLength;
+        StartCoroutine(setUpBoss());
         waveTimer = 0;
-
-
-        boss.SetActive(true);
-        //
         current = waveState.waveActive;
+
+        bossFade.SetActive(true);
         nextWaveStarted = true;
         //current = waveState.waveActive;
+    }
+
+    private IEnumerator setUpBoss()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        player.transform.position = bossWavePlayerSpawnLocation.position;
+        player.GetComponent<playerMovement>().enabled = true;
+        waveLength = waves[wavePointer].waveLength;
+        
+        boss.SetActive(true);
     }
 }

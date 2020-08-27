@@ -547,7 +547,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        AudioManager.instance.PlaySoundEffect3D(deathSoundName, transform.position, 1f, 0.95f, 1.05f);
+        AudioManager.instance.PlaySoundEffect3D(deathSoundName, transform.position, 2f, 0.95f, 1.05f);
         int pointsToAdd = 5;
 
         //SaveLoadManager code added by Joe - sets PlayerKilledEnemy/boss to 1 (i.e. true)

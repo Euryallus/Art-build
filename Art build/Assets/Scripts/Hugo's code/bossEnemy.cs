@@ -164,6 +164,8 @@ public class bossEnemy : Enemy
 
                         Vector3 endOfLaser = (bossHead.position + new Vector3(0, beamDirection.y, 0) + (transform.forward * playerDist));
 
+                        AudioManager.instance.PlaySoundEffect3D("Laser Loop", transform.position, 1, 0.9f, 1f);
+
                         //Debug.DrawRay(bossHead.position, (endOfLaser - bossHead.position).normalized * playerDist * 1.2f);
 
                         if (Physics.Raycast(bossHead.position, (endOfLaser - bossHead.position).normalized, out hitObj, playerDist))
@@ -329,7 +331,7 @@ public class bossEnemy : Enemy
 
     private IEnumerator wakeUP()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
 
         readyToFight = true;
     }

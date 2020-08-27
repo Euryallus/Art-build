@@ -19,6 +19,9 @@ public class coneScript : MonoBehaviour
     private Vector3 bossVector;
     private GameObject boss;
 
+    [SerializeField]
+    private string playOnDeath;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -75,6 +78,7 @@ public class coneScript : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Enemy") == false && fire)
         {
+            AudioManager.instance.PlaySoundEffect3D(playOnDeath, transform.position, 1f, 0.95f, 1.05f);
             Destroy(gameObject);
         }
 
