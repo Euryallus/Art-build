@@ -295,34 +295,39 @@ MonoBehaviour:
     Mike
     Wickes
 
+    Michael Gladwell
+
+    Kimathi Mugambi
+
 
     <b>Technical Artist</b>
 
-    Hugo Bailey
+    Hugo
+    Bailey
 
 
     <b>UI Artists</b>
 
-    Sandra
-    Grozav
+    Sandra Grozav
 
     Joe Allen
 
 
     <b>Music</b>
 
-    Joe Allen
+    Joe
+    Allen
 
 
     <b>Sound Effects</b>
 
-    Joe
-    Allen
+    Joe Allen
 
     Noah Rigden
 
 
-    <b>Special Effects</b>
+    <b>Special
+    Effects</b>
 
     Hugo Bailey
 
@@ -396,12 +401,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 140822036}
-    characterCount: 407
+    characterCount: 440
     spriteCount: 0
-    spaceCount: 74
-    wordCount: 61
+    spaceCount: 78
+    wordCount: 65
     linkCount: 0
-    lineCount: 42
+    lineCount: 44
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

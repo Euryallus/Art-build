@@ -27,6 +27,7 @@ public class tutorial : MonoBehaviour
     void Start()
     {
         starStone = GameObject.FindGameObjectWithTag("GeneratorManager").GetComponent<starStoneManager>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
