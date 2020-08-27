@@ -118,10 +118,10 @@ public class starStoneManager : MonoBehaviour
             // if the game is running & enemies are alive, alter their material to match which stone is active
             for (int j = 0; j < enemies.Length; j++)
             {
-                if(enemies[j].GetComponent<Enemy>().hasHurt == false)
-                {
-                    enemies[j].GetComponent<MeshRenderer>().material = enemyMaterials[(int)activeStone];
-                }
+                //if(enemies[j].GetComponent<Enemy>().hasHurt == false)
+                //{
+                //    enemies[j].GetComponent<MeshRenderer>().material = enemyMaterials[(int)activeStone];
+                //}
                 
             }
         }
