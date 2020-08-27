@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a652d204e1e441a7aa9b602d3810e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStone: 0
   materials:
   - {fileID: 2100000, guid: 6c9278b2c37ee514dbcf70b7888e501e, type: 2}
   - {fileID: 2100000, guid: b6114c756ee19724d9fe9ab67b50a0c4, type: 2}
@@ -19,6 +20,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7c0e08c4c4632ce43926edd38dc153cb, type: 2}
   - {fileID: 2100000, guid: bb0a4805fa3d11944853f79c43946535, type: 2}
   crystalRendererIndex: 1
+  renderer: {fileID: 0}
   parent: {fileID: 4091221285176379673}
 --- !u!114 &158507248489137983
 MonoBehaviour:
@@ -32,6 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a652d204e1e441a7aa9b602d3810e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStone: 0
   materials:
   - {fileID: 2100000, guid: 6c9278b2c37ee514dbcf70b7888e501e, type: 2}
   - {fileID: 2100000, guid: b6114c756ee19724d9fe9ab67b50a0c4, type: 2}
@@ -39,6 +42,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7c0e08c4c4632ce43926edd38dc153cb, type: 2}
   - {fileID: 2100000, guid: bb0a4805fa3d11944853f79c43946535, type: 2}
   crystalRendererIndex: 1
+  renderer: {fileID: 0}
   parent: {fileID: 4091221285176379673}
 --- !u!1 &4091221285176379672
 GameObject:
@@ -5300,7 +5304,7 @@ PrefabInstance:
     - target: {fileID: 5984424145518679884, guid: 97ad0f694cbceba4aaaed59fdcceca51,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.179
+      value: 0.083
       objectReference: {fileID: 0}
     - target: {fileID: 5984424145518679884, guid: 97ad0f694cbceba4aaaed59fdcceca51,
         type: 3}
