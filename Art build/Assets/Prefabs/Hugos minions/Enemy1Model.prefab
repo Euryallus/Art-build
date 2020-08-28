@@ -5250,13 +5250,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a652d204e1e441a7aa9b602d3810e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStone: 0
   materials:
   - {fileID: 2100000, guid: 6c9278b2c37ee514dbcf70b7888e501e, type: 2}
   - {fileID: 2100000, guid: b6114c756ee19724d9fe9ab67b50a0c4, type: 2}
   - {fileID: 2100000, guid: 5df3e152626da3c4695447915981b3fc, type: 2}
   - {fileID: 2100000, guid: 7c0e08c4c4632ce43926edd38dc153cb, type: 2}
   - {fileID: 2100000, guid: bb0a4805fa3d11944853f79c43946535, type: 2}
+  hurt: {fileID: 2100000, guid: 1ca47d99f076fb647abb10ace632be7f, type: 2}
   crystalRendererIndex: 0
+  renderer: {fileID: 0}
   parent: {fileID: 433271975649020869}
 --- !u!1001 &9198358639187403698
 PrefabInstance:

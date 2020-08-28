@@ -497,7 +497,7 @@ public class Enemy : MonoBehaviour
         float damageDone = hitPoints;
 
         hasHurt = true;
-        gameObject.GetComponent<MeshRenderer>().material = damageMaterial;
+        //gameObject.GetComponent<MeshRenderer>().material = damageMaterial;
         StartCoroutine(hurtColour());
         if (generator.returnActive() == starStoneManager.starStones.Purple)
         {

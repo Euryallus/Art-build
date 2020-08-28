@@ -19,28 +19,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5df3e152626da3c4695447915981b3fc, type: 2}
   - {fileID: 2100000, guid: 7c0e08c4c4632ce43926edd38dc153cb, type: 2}
   - {fileID: 2100000, guid: bb0a4805fa3d11944853f79c43946535, type: 2}
-  crystalRendererIndex: 1
-  renderer: {fileID: 0}
-  parent: {fileID: 4091221285176379673}
---- !u!114 &158507248489137983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043389039896539228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4a652d204e1e441a7aa9b602d3810e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStone: 0
-  materials:
-  - {fileID: 2100000, guid: 6c9278b2c37ee514dbcf70b7888e501e, type: 2}
-  - {fileID: 2100000, guid: b6114c756ee19724d9fe9ab67b50a0c4, type: 2}
-  - {fileID: 2100000, guid: 5df3e152626da3c4695447915981b3fc, type: 2}
-  - {fileID: 2100000, guid: 7c0e08c4c4632ce43926edd38dc153cb, type: 2}
-  - {fileID: 2100000, guid: bb0a4805fa3d11944853f79c43946535, type: 2}
+  hurt: {fileID: 2100000, guid: 1ca47d99f076fb647abb10ace632be7f, type: 2}
   crystalRendererIndex: 1
   renderer: {fileID: 0}
   parent: {fileID: 4091221285176379673}
@@ -63,6 +42,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &158507248489137983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043389039896539228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4a652d204e1e441a7aa9b602d3810e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStone: 0
+  materials:
+  - {fileID: 2100000, guid: 6c9278b2c37ee514dbcf70b7888e501e, type: 2}
+  - {fileID: 2100000, guid: b6114c756ee19724d9fe9ab67b50a0c4, type: 2}
+  - {fileID: 2100000, guid: 5df3e152626da3c4695447915981b3fc, type: 2}
+  - {fileID: 2100000, guid: 7c0e08c4c4632ce43926edd38dc153cb, type: 2}
+  - {fileID: 2100000, guid: bb0a4805fa3d11944853f79c43946535, type: 2}
+  hurt: {fileID: 2100000, guid: 1ca47d99f076fb647abb10ace632be7f, type: 2}
+  crystalRendererIndex: 1
+  renderer: {fileID: 0}
+  parent: {fileID: 4091221285176379673}
 --- !u!1 &4091221285176379672
 GameObject:
   m_ObjectHideFlags: 0
