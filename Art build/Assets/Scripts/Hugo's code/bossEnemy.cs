@@ -61,6 +61,16 @@ public class bossEnemy : Enemy
 
     private Vector3 beamDirection;
 
+    [Header("Sounds")]
+    [SerializeField]
+    private string roar;
+
+    [SerializeField]
+    private string laserCharge;
+    [SerializeField]
+    private string laserFire;
+
+
     [SerializeField]
     private List<GameObject> healthPools = new List<GameObject>();
     private bool poolsActive = false;
@@ -164,7 +174,7 @@ public class bossEnemy : Enemy
 
                         Vector3 endOfLaser = (bossHead.position + new Vector3(0, beamDirection.y, 0) + (transform.forward * playerDist));
 
-                        AudioManager.instance.PlaySoundEffect3D("Laser Loop", transform.position, 1, 0.9f, 1f);
+                        AudioManager.instance.PlaySoundEffect2D(laserFire, 1, 0.8f, 1.3f);
 
                         //Debug.DrawRay(bossHead.position, (endOfLaser - bossHead.position).normalized * playerDist * 1.2f);
 
@@ -281,7 +291,8 @@ public class bossEnemy : Enemy
     {
         purpleReadyToFire = false;
         purpleChargePart1.SetActive(true);
-        
+        AudioManager.instance.PlaySoundEffect2D(laserCharge,  1.5f, 0.4f, 0.8f);
+
         yield return new WaitForSeconds(purpleChargeTime);
 
         purpleChargePart2.SetActive(true);
@@ -332,7 +343,7 @@ public class bossEnemy : Enemy
     private IEnumerator wakeUP()
     {
         yield return new WaitForSeconds(6);
-
+        AudioManager.instance.PlaySoundEffect2D(roar, 3, 1, 1);
         readyToFight = true;
     }
 

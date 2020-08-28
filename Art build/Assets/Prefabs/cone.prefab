@@ -4896,7 +4896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 15
-  playOnDeath: Explosion
+  playOnDeath: IceShatter
 --- !u!54 &2265667841145632612
 Rigidbody:
   m_ObjectHideFlags: 0
