@@ -6223,8 +6223,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8942,7 +8942,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-328558
+  m_Name: pb_Mesh-514316
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17746,8 +17746,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 962052935, guid: 3d3b7f8cc518a5a4983c3c2f51930454, type: 3}
       propertyPath: description
-      value: They also float
+      value: Find them dotted around the map
       objectReference: {fileID: 0}
+    - target: {fileID: 962052935, guid: 3d3b7f8cc518a5a4983c3c2f51930454, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: b6b168930715b6340b25eee7c94dd21c,
+        type: 3}
     - target: {fileID: 5560996224377080209, guid: 3d3b7f8cc518a5a4983c3c2f51930454,
         type: 3}
       propertyPath: m_Name
@@ -35456,8 +35461,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: eccdf6ea1b3e92c47bc39e2a9efc595a, type: 3}
+    m_FontSize: 19
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 2
@@ -44816,8 +44821,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 76e8d4cb607bd4145984f40af497dd40, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -44840,7 +44845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-333694
+  m_Name: pb_Mesh-519452
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -49151,6 +49156,11 @@ PrefabInstance:
       propertyPath: description
       value: This is a note
       objectReference: {fileID: 0}
+    - target: {fileID: 962052935, guid: 3d3b7f8cc518a5a4983c3c2f51930454, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c362a1ccfee44642a37fe29db0826cc,
+        type: 3}
     - target: {fileID: 5560996224377080209, guid: 3d3b7f8cc518a5a4983c3c2f51930454,
         type: 3}
       propertyPath: m_Name
@@ -56665,8 +56675,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 962052935, guid: 3d3b7f8cc518a5a4983c3c2f51930454, type: 3}
       propertyPath: description
-      value: How cool is that? :D
+      value: Use them to decipher the past
       objectReference: {fileID: 0}
+    - target: {fileID: 962052935, guid: 3d3b7f8cc518a5a4983c3c2f51930454, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: dc224b0860d2f654cabadc4912d78504,
+        type: 3}
     - target: {fileID: 5560996224377080209, guid: 3d3b7f8cc518a5a4983c3c2f51930454,
         type: 3}
       propertyPath: m_Name
@@ -59458,7 +59473,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-333876
+  m_Name: pb_Mesh-519634
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -62492,6 +62507,11 @@ PrefabInstance:
       propertyPath: description
       value: It tells you pieces of story
       objectReference: {fileID: 0}
+    - target: {fileID: 962052935, guid: 3d3b7f8cc518a5a4983c3c2f51930454, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 52159c6a4da5d1a4e93ec32e324dcb24,
+        type: 3}
     - target: {fileID: 5560996224377080209, guid: 3d3b7f8cc518a5a4983c3c2f51930454,
         type: 3}
       propertyPath: m_Name
