@@ -27,8 +27,8 @@ MonoBehaviour:
     type: 3}
   m_range: 30
   m_continuousFire: 0
-  m_totalStartAmmo: 45
-  m_magazineSize: 10
+  m_totalStartAmmo: 80
+  m_magazineSize: 15
   m_reloadTime: 1.8
   m_canUseAsMelee: 1
   m_meleeRange: 5
