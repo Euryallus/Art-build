@@ -13,6 +13,9 @@ public class introDoors : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        doors.SetActive(true);
+        if (collision.CompareTag("Player"))
+        {
+            doors.SetActive(true);
+        }
     }
 }
