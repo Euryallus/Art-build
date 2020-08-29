@@ -545,7 +545,7 @@ public class Enemy : MonoBehaviour
         agent.speed = enemySpeed;
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         AudioManager.instance.PlaySoundEffect3D(deathSoundName, transform.position, 2f, 0.95f, 1.05f);
         int pointsToAdd = 5;

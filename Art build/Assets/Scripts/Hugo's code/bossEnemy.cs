@@ -77,6 +77,9 @@ public class bossEnemy : Enemy
     private List<GameObject> healthPools = new List<GameObject>();
     private bool poolsActive = false;
 
+    [SerializeField]
+    private GameObject explosionOnDeath;
+
     public bossEnemy() : base(500f, 180, 4, 1.5f, 4)
     {
         // ## CLASS CONSTRUCTOR
@@ -102,6 +105,28 @@ public class bossEnemy : Enemy
 
         base.Start();
 
+    }
+
+    protected override void Die()
+    {
+        foreach (GameObject pool in healthPools)
+        {
+            pool.SetActive(false);
+        }
+
+        AudioManager.instance.StopAllLoopingSoundEffects();
+        AudioManager.instance.StopAllSoundEffects();
+
+        AudioManager.instance.PlaySoundEffect2D(deathSoundName, 3f, 0.95f, 1.05f);
+        //SaveLoadManager code added by Joe - sets PlayerKilledEnemy/boss to 1 (i.e. true)
+        //  so the fact that the player has killed a certain enemy type is saved. Used to show relevant info in the codex scene.
+        int enemiesKilled = SaveLoadManager.instance.LoadIntFromPlayerPrefs("Counter_EnemiesKilled");
+        SaveLoadManager.instance.SaveIntToPlayerPrefs("Counter_EnemiesKilled", enemiesKilled + 1);
+
+        GameObject exposion = Instantiate(explosionOnDeath);
+        exposion.transform.position = transform.position;
+
+        Destroy(gameObject);
     }
 
     public override void Patrol()
@@ -140,6 +165,9 @@ public class bossEnemy : Enemy
                     break;
 
                 case starStoneManager.starStones.Purple:
+                    AudioManager.instance.StopLoopingSoundEffect("flameFiring");
+                    AudioManager.instance.StopLoopingSoundEffect("flame Passive");
+
                     flames.SetActive(false);
 
                     poolsActive = false;
@@ -201,6 +229,9 @@ public class bossEnemy : Enemy
                     break;
 
                 case starStoneManager.starStones.Orange:
+                    AudioManager.instance.StopLoopingSoundEffect("Laser Shot");
+                    AudioManager.instance.StopLoopingSoundEffect("flame Passive");
+
                     purpleLaser.gameObject.SetActive(false);
                     purpleChargePart1.SetActive(false);
                     purpleChargePart2.SetActive(false);
@@ -232,6 +263,10 @@ public class bossEnemy : Enemy
                     break;
 
                 case starStoneManager.starStones.Blue:
+                    AudioManager.instance.StopLoopingSoundEffect("flameFiring");
+
+                    AudioManager.instance.StopLoopingSoundEffect("Laser Shot");
+
                     purpleLaser.gameObject.SetActive(false);
                     purpleChargePart1.SetActive(false);
                     purpleChargePart2.SetActive(false);
@@ -264,6 +299,10 @@ public class bossEnemy : Enemy
                     break;
 
                 case starStoneManager.starStones.Pink:
+                    AudioManager.instance.StopLoopingSoundEffect("flameFiring");
+                    AudioManager.instance.StopLoopingSoundEffect("flame Passive");
+                    AudioManager.instance.StopLoopingSoundEffect("Laser Shot");
+
                     purpleLaser.gameObject.SetActive(false);
                     purpleChargePart1.SetActive(false);
                     purpleChargePart2.SetActive(false);
@@ -310,10 +349,13 @@ public class bossEnemy : Enemy
         //base.Engage(); //call base ENGAGE behaviour from parent class ('Enemy')
     }
 
+    
+
     private IEnumerator purpleCharge()
     {
         purpleReadyToFire = false;
         purpleChargePart1.SetActive(true);
+
         AudioManager.instance.PlayLoopingSoundEffect("Laser Loop", false, transform.position, "Laser Shot", 1, 0f, 0.5f);
 
         yield return new WaitForSeconds(purpleChargeTime);

@@ -56,6 +56,10 @@ public class coneScript : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3);
 
+        if(boss == null)
+        {
+            Destroy(gameObject);
+        }
 
         if (fire)
         {
