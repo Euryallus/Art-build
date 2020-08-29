@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87d536ab72ef8a4f845c7b1a9e6eefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 20
+  viewDistance: 30
   transitionTime: 3
   enemySpeed: 2.5
   enemyHealth: 63
