@@ -30,6 +30,7 @@ public class bossHealthPool : MonoBehaviour
         time += Time.deltaTime;
 
         transform.position = originalPos + ((Mathf.Sin(time + randomOffset) * Vector3.up) * mag);
+
     }
 
     private void OnTriggerStay(Collider other)

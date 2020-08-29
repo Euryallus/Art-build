@@ -44,6 +44,8 @@ public class bossEnemy : Enemy
     [SerializeField]
     private float bossDamage = 1f;
 
+    private bool canMelee = true;
+
     [SerializeField]
     private GameObject purpleChargePart1;
     [SerializeField]
@@ -174,7 +176,7 @@ public class bossEnemy : Enemy
 
                         Vector3 endOfLaser = (bossHead.position + new Vector3(0, beamDirection.y, 0) + (transform.forward * playerDist));
 
-                        AudioManager.instance.PlaySoundEffect2D(laserFire, 1, 0.8f, 1.3f);
+                        
 
                         //Debug.DrawRay(bossHead.position, (endOfLaser - bossHead.position).normalized * playerDist * 1.2f);
 
@@ -280,6 +282,27 @@ public class bossEnemy : Enemy
                         poolsActive = true;
                     }
 
+                    if (canSeePlayer && playerDist > meleeDistance)
+                    {
+                        agent.SetDestination(player.transform.position);
+                    }
+
+                    if(canSeePlayer && playerDist <= meleeDistance)
+                    {
+                        agent.SetDestination(transform.position);
+
+                        if (canMelee)
+                        {
+                            canMelee = false;
+                            StartCoroutine(bossMelee());
+                        }
+                    }
+
+                    if(canSeePlayer == false)
+                    {
+                        agent.SetDestination(player.transform.position);
+                    }
+
                     break;
             }
 
@@ -291,16 +314,20 @@ public class bossEnemy : Enemy
     {
         purpleReadyToFire = false;
         purpleChargePart1.SetActive(true);
-        AudioManager.instance.PlaySoundEffect2D(laserCharge,  1.5f, 0.4f, 0.8f);
+        AudioManager.instance.PlayLoopingSoundEffect("Laser Loop", false, transform.position, "Laser Shot", 1, 0f, 0.5f);
 
         yield return new WaitForSeconds(purpleChargeTime);
+        AudioManager.instance.StopLoopingSoundEffect("Laser Shot");
 
+        AudioManager.instance.PlayLoopingSoundEffect("Laser Loop", false, transform.position, "Laser Shot", 1, 0.8f, 1.3f);
+        AudioManager.instance.PlaySoundEffect2D("Laser Shot", 2, 1, 1);
         purpleChargePart2.SetActive(true);
         purpleFiring = true;
         purpleLaser.gameObject.SetActive(true);
         rotateSpeed = 3;
         yield return new WaitForSeconds(purpleFireTime);
 
+        AudioManager.instance.StopLoopingSoundEffect("Laser Shot");
         purpleFiring = false;
         rotateSpeed = 3;
         purpleLaser.gameObject.SetActive(false);
@@ -316,6 +343,8 @@ public class bossEnemy : Enemy
     {
         blueReadyToFire = false;
 
+        AudioManager.instance.PlaySoundEffect2D("IceCronch", 1.5f, 0.9f, 1.1f);
+
         GameObject iceLance = Instantiate(iceLanceBlueprint);
         iceLance.transform.position = transform.position + (transform.right * 2) + (transform.up * 1.5f);
         iceLance.GetComponent<coneScript>().takeParentPos(iceLance.transform.position - transform.position, gameObject);
@@ -330,13 +359,18 @@ public class bossEnemy : Enemy
 
     private IEnumerator orangeFlames()
     {
+
+        AudioManager.instance.PlayLoopingSoundEffect("FlameFire", false, transform.position, "flameFiring", 1, 0.5f, 1.3f);
         flames.SetActive(true);
         orangeReady = false;
 
         yield return new WaitForSeconds(5);
+        AudioManager.instance.StopLoopingSoundEffect("flameFiring");
         flames.SetActive(false);
 
+        AudioManager.instance.PlayLoopingSoundEffect("flamePassive", false, transform.position, "flame Passive", 1.1f, 1f, 1.3f);
         yield return new WaitForSeconds(3);
+        AudioManager.instance.StopLoopingSoundEffect("flame Passive");
         orangeReady = true;
     }
 
@@ -345,6 +379,16 @@ public class bossEnemy : Enemy
         yield return new WaitForSeconds(6);
         AudioManager.instance.PlaySoundEffect2D(roar, 3, 1, 1);
         readyToFight = true;
+    }
+
+    private IEnumerator bossMelee()
+    {
+        player.GetComponent<playerHealth>().takeDamage(meleeHitDamage);
+
+        AudioManager.instance.PlaySoundEffect3D("EnemyMeleeHit", transform.position);
+        yield return new WaitForSeconds(2);
+
+        canMelee = true;
     }
 
 }

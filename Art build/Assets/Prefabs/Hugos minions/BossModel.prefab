@@ -10018,6 +10018,9 @@ MonoBehaviour:
   iceLanceBlueprint: {fileID: 6444318393734118213, guid: c0c114dca829b9e43a043031ca6aac3e,
     type: 3}
   purpleLaser: {fileID: 0}
+  roar: 
+  laserCharge: 
+  laserFire: 
   healthPools:
   - {fileID: 0}
   - {fileID: 0}
