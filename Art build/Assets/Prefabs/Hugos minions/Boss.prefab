@@ -14737,7 +14737,7 @@ MonoBehaviour:
   viewDistance: 100
   transitionTime: 4
   enemySpeed: 1.8
-  enemyHealth: 1156
+  enemyHealth: 2500
   regenPerSecond: 0.5
   healthBar: {fileID: 1044765233735901498}
   enemyViewAngle: 180
@@ -14779,6 +14779,9 @@ MonoBehaviour:
   iceLanceBlueprint: {fileID: 6444318393734118213, guid: c0c114dca829b9e43a043031ca6aac3e,
     type: 3}
   purpleLaser: {fileID: 0}
+  roar: 
+  laserCharge: 
+  laserFire: 
   healthPools:
   - {fileID: 0}
   - {fileID: 0}
@@ -14786,6 +14789,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  explosionOnDeath: {fileID: 0}
 --- !u!1 &4279228257195704197
 GameObject:
   m_ObjectHideFlags: 0
