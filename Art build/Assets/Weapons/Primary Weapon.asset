@@ -35,7 +35,7 @@ MonoBehaviour:
   m_minMeleeAttackDamage: 30
   m_maxMeleeAttackDamage: 35
   m_meleeInterval: 3
-  m_recoilIntensity: 1
+  m_recoilIntensity: 0.2
   m_meleeSound: SwordSwipe
   m_meleeSoundVolume: 1
   m_reloadSound: Reload
