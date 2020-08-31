@@ -44,6 +44,7 @@ public class WeaponHolder : MonoBehaviour
     private starStoneManager.starStones lastFrameStarStone;     //The StarStone that was active on the previous frame, used to check for changes in the active StarStone
 
     private GameObject gunLight;
+    public static Vector3 recoilOffset;
 
     private void Start()
     {
@@ -155,6 +156,8 @@ public class WeaponHolder : MonoBehaviour
         }
         //Lerp to the target FOV for the current one to create smooth motion
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetCameraFOV, Time.deltaTime * 20f);
+
+        recoilOffset = Vector3.Lerp(recoilOffset, Vector3.zero, Time.deltaTime * 20f);
     }
 
     public void SetEmptyHand(bool empty)

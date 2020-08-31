@@ -90,7 +90,8 @@ public class playerMovement : MonoBehaviour
         rotateY -= mouseY;
         rotateY = Mathf.Clamp(rotateY, -75f, 75f);
 
-        playerCamera.transform.localRotation = Quaternion.Euler(rotateY, 0f, 0f);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotateY + WeaponHolder.recoilOffset.x, WeaponHolder.recoilOffset.y, 0f);
+        playerCamera.transform.localPosition = new Vector3(0f, 0.748f, 0.43f + WeaponHolder.recoilOffset.z);
 
         transform.Rotate(Vector3.up * mouseX);
     }

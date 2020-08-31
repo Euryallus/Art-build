@@ -66,6 +66,10 @@ public class GunWeaponTemplate : WeaponTemplate
     [Tooltip("Minimum time between each usage of this gun as a melee weapon")]
     private float m_meleeInterval;
 
+    [SerializeField]
+    [Tooltip("Intensity of recoil effect when shooting")]
+    private float m_recoilIntensity;
+
     //Set in custom editor:
 
     //Name of sound effect to be played when using this gun as a melee weapon
@@ -152,6 +156,10 @@ public class GunWeaponTemplate : WeaponTemplate
     public int GetMaxMeleeAttackDamage()
     {
         return m_maxMeleeAttackDamage;
+    }
+    public float GetRecoilIntensity()
+    {
+        return m_recoilIntensity;
     }
 
     #endregion
