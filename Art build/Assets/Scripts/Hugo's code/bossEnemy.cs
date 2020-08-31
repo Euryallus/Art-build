@@ -418,8 +418,9 @@ public class bossEnemy : Enemy
 
     private IEnumerator wakeUP()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
         AudioManager.instance.PlaySoundEffect2D(roar, 3, 1, 1);
+        yield return new WaitForSeconds(2);
         readyToFight = true;
     }
 

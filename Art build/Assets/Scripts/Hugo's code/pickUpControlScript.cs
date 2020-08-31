@@ -93,7 +93,8 @@ public class pickUpControlScript : MonoBehaviour
 
                 if (hitObject.CompareTag("tutorialOffering"))
                 {
-                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
                     TextCutscene.storyIndex = 0;
                     SaveLoadManager.instance.LoadSceneWithFade("IntroScene", false);
 

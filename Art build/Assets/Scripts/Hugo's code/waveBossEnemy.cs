@@ -30,6 +30,13 @@ public class waveBossEnemy : Enemy
 
     public override void Engage()
     {
+
+        Vector3 playerDirection = playerVector.normalized;
+        playerDirection.y = 0;
+
+        Quaternion lookRotation = Quaternion.LookRotation(playerDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3);
+
         if (canSeePlayer)
         {
             agent.SetDestination(transform.position);

@@ -111,7 +111,7 @@ public class missileTemp : MonoBehaviour
             collision.gameObject.GetComponent<playerHealth>().takeDamage(damageToDo); //Damage is inflicted on player and styar stone effects are added (e.g. player catches on fire)
         }
 
-        AudioManager.instance.PlaySoundEffect3D("Explosion", transform.position);
+        AudioManager.instance.PlaySoundEffect3D("Explosion", transform.position, 0.5f, 1, 1);
         Destroy(gameObject); // Destroys missile on any plhysics collision (e.g. walls, floor, player etc.)
     }
 
