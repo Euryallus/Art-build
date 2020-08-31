@@ -133,7 +133,7 @@ public class GunWeapon : Weapon
 
         float inten = m_gunTemplate.GetRecoilIntensity();
         bool recoilDir = Random.Range(0, 2) == 0;
-        WeaponHolder.recoilOffset = (new Vector3(Random.Range(-7f * inten, -8f * inten), (recoilDir ? (- 5f * inten) : (5f * inten)), -0.05f * inten));
+        WeaponHolder.recoilOffset = (new Vector3(Random.Range(-7f * inten, -8f * inten), (recoilDir ? (- 5f * inten) : (5f * inten)), -0.15f * inten));
 
         //Trigger the shoot animation and sound
         gunGameObject.transform.Find("Gun").GetComponent<Animator>().SetTrigger("Shoot");
