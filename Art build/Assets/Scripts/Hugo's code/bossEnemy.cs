@@ -117,7 +117,7 @@ public class bossEnemy : Enemy
         AudioManager.instance.StopAllLoopingSoundEffects();
         AudioManager.instance.StopAllSoundEffects();
 
-        AudioManager.instance.PlaySoundEffect2D(deathSoundName, 3f, 0.95f, 1.05f);
+        AudioManager.instance.PlaySoundEffect3D(deathSoundName, transform.position, 3f, 0.95f, 1.05f);
         //SaveLoadManager code added by Joe - sets PlayerKilledEnemy/boss to 1 (i.e. true)
         //  so the fact that the player has killed a certain enemy type is saved. Used to show relevant info in the codex scene.
         int enemiesKilled = SaveLoadManager.instance.LoadIntFromPlayerPrefs("Counter_EnemiesKilled");
@@ -362,7 +362,7 @@ public class bossEnemy : Enemy
         AudioManager.instance.StopLoopingSoundEffect("Laser Shot");
 
         AudioManager.instance.PlayLoopingSoundEffect("Laser Loop", false, transform.position, "Laser Shot", 1, 0.8f, 1.3f);
-        AudioManager.instance.PlaySoundEffect2D("Laser Shot", 2, 1, 1);
+        AudioManager.instance.PlaySoundEffect3D("Laser Shot", transform.position, 2, 1, 1);
         purpleChargePart2.SetActive(true);
         purpleFiring = true;
         purpleLaser.gameObject.SetActive(true);
@@ -385,7 +385,7 @@ public class bossEnemy : Enemy
     {
         blueReadyToFire = false;
 
-        AudioManager.instance.PlaySoundEffect2D("IceCronch", 1.5f, 0.9f, 1.1f);
+        AudioManager.instance.PlaySoundEffect3D("IceCronch", transform.position, 3f, 0.9f, 1.1f);
 
         GameObject iceLance = Instantiate(iceLanceBlueprint);
         iceLance.transform.position = transform.position + (transform.right * 2) + (transform.up * 1.5f);
@@ -419,7 +419,7 @@ public class bossEnemy : Enemy
     private IEnumerator wakeUP()
     {
         yield return new WaitForSeconds(4);
-        AudioManager.instance.PlaySoundEffect2D(roar, 3, 1, 1);
+        AudioManager.instance.PlaySoundEffect3D(roar, transform.position, 5, 1, 1);
         yield return new WaitForSeconds(2);
         readyToFight = true;
     }

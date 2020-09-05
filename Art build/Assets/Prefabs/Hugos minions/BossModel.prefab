@@ -9843,7 +9843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3512518706179600662
 Transform:
   m_ObjectHideFlags: 0
@@ -9953,7 +9953,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3512518706179600657}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 8
   m_Drag: 0
   m_AngularDrag: 1
   m_UseGravity: 1
@@ -9980,7 +9980,7 @@ MonoBehaviour:
   regenPerSecond: 0.5
   healthBar: {fileID: 3512518705789768840}
   enemyViewAngle: 180
-  deathSoundName: 
+  deathSoundName: bossDeath
   damageMaterial: {fileID: 2100000, guid: 1ca47d99f076fb647abb10ace632be7f, type: 2}
   fireDamage: 2
   fireLength: 4
@@ -10018,9 +10018,9 @@ MonoBehaviour:
   iceLanceBlueprint: {fileID: 6444318393734118213, guid: c0c114dca829b9e43a043031ca6aac3e,
     type: 3}
   purpleLaser: {fileID: 0}
-  roar: 
-  laserCharge: 
-  laserFire: 
+  roar: BossRoar
+  laserCharge: Laser Loop
+  laserFire: Laser Shot
   healthPools:
   - {fileID: 0}
   - {fileID: 0}
@@ -10028,6 +10028,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  explosionOnDeath: {fileID: 1033105548700199340, guid: bdfd7eaf0a077f94d8d97b529fd5362a,
+    type: 3}
 --- !u!95 &6104536224507103042
 Animator:
   serializedVersion: 3
