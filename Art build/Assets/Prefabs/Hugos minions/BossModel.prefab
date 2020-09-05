@@ -9976,8 +9976,8 @@ MonoBehaviour:
   viewDistance: 100
   transitionTime: 4
   enemySpeed: 1.8
-  enemyHealth: 1156
-  regenPerSecond: 0.5
+  enemyHealth: 2500
+  regenPerSecond: 3
   healthBar: {fileID: 3512518705789768840}
   enemyViewAngle: 180
   deathSoundName: 
@@ -10008,7 +10008,7 @@ MonoBehaviour:
   fireRate: 2
   stoneManager: {fileID: 0}
   purpleCooldown: 2
-  purpleChargeTime: 4
+  purpleChargeTime: 2
   purpleFireTime: 4
   blueCooldown: 3
   bossDamage: 1
@@ -10028,6 +10028,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  explosionOnDeath: {fileID: 0}
 --- !u!95 &6104536224507103042
 Animator:
   serializedVersion: 3
